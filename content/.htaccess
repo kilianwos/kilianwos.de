@@ -1,0 +1,19 @@
+# 🔒 Deaktiviert die PHP-Engine im Ordner (gilt nur bei mod_php!)
+php_flag engine off
+
+# 🔒 Entfernt die Handler & MIME-Typen für gefährliche Dateitypen,
+# sodass selbst bei falsch konfiguriertem Apache kein Code ausgeführt wird
+RemoveHandler .php .phtml .php3 .php4 .php5 .phar .inc
+RemoveType .php .phtml .php3 .php4 .php5 .phar .inc
+
+# ❌ Verbietet standardmäßig den Zugriff auf alle Dateien
+# (Blacklist-Ansatz wäre unsicher - dies ist eine Whitelist)
+<FilesMatch ".*">
+  Require all denied
+</FilesMatch>
+
+# ✅ Erlaubt nur bestimmte statische Dateitypen (Whitelist)
+# Du kannst hier jederzeit weitere erlaubte Endungen ergänzen
+<FilesMatch "\.(css|js|png|jpe?g|gif|svg|webp|pdf|woff2?|ttf|otf|mp4|txt)$">
+  Require all granted
+</FilesMatch>

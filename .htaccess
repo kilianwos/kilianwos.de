@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # ✅ 1. Erlaube Dateien im content-Ordner direkt
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteCond %{REQUEST_URI} ^/content/
+    RewriteRule ^ - [L]
+
+    # 📥 2. Leite alles andere an router.php
+    RewriteRule ^ router.php [L]
+</IfModule>

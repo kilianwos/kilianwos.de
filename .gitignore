@@ -1,0 +1,9 @@
+# ignores all files in flags folder
+/flags/*
+
+# keeps flags folder
+!/flags/.gitkeep
+
+# OS generated files
+.DS_Store
+Thumbs.db
